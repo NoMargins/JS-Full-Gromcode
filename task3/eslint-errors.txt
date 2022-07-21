@@ -1,6 +1,10 @@
-eslintsemi
-tab.eslintindent
-eslintno-tabs
-eslintno-var
-eslinteqeqeq
-eslintno-undef
+semi
+indent
+no-tabs
+no-var
+eqeqeq
+no-undef
+no-plusplus
+prettier/prettier
+no-return-assign
+no-undef
