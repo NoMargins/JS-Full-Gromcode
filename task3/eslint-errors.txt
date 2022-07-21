@@ -1,0 +1,6 @@
+eslintsemi
+tab.eslintindent
+eslintno-tabs
+eslintno-var
+eslinteqeqeq
+eslintno-undef
