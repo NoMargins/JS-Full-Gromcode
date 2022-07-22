@@ -8,3 +8,5 @@ no-plusplus
 prettier/prettier
 no-return-assign
 no-undef
+
+https://github.com/gromcode/front-end-articles/blob/master/eslint-config.md
