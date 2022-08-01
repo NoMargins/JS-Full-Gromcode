@@ -13,7 +13,6 @@ it('is there odd numbers', () => {
 });
 
 it('is 2+3=5', () => {
-	const a = 2;
-	const b = 3;
-	expect(getSum).toEqual(5);
+	const result = getSum(2, 3);
+	expect(result).toEqual(5);
 });
