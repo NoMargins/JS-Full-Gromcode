@@ -7,6 +7,6 @@ export const getItemsList = () => {
 export const getItemsArray = () => {
 	const array = document.querySelectorAll('.tool');
 	const elementsArray = Array.from(array);
-	console.log(elementsArray);
+	console.dir(elementsArray);
 	return elementsArray;
 };
