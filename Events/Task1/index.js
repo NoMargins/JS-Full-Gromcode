@@ -29,12 +29,12 @@ const handlersON = document.querySelector('.attach-handlers-btn');
 const handlersOFF = document.querySelector('.remove-handlers-btn');
 
 const addAllEvents = () => {
-	divEl.addEventListener(newLocal, logGreyDiv);
-	pEl.addEventListener(newLocal, logGreyP);
-	spanEl.addEventListener(newLocal, logGreySpan);
-	divEl.addEventListener(newLocal, logGreenDiv, true);
-	pEl.addEventListener(newLocal, logGreenP, true);
-	spanEl.addEventListener(newLocal, logGreenSpan, true);
+	divEl.addEventListener(newLocal, logGreyDiv, true);
+	pEl.addEventListener(newLocal, logGreyP, true);
+	spanEl.addEventListener(newLocal, logGreySpan, true);
+	divEl.addEventListener(newLocal, logGreenDiv);
+	pEl.addEventListener(newLocal, logGreenP);
+	spanEl.addEventListener(newLocal, logGreenSpan);
 };
 handlersON.addEventListener(newLocal, addAllEvents);
 
