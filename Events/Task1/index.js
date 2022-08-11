@@ -39,11 +39,11 @@ const addAllEvents = () => {
 handlersON.addEventListener(newLocal, addAllEvents);
 
 const removeAllEvents = () => {
-	divEl.removeEventListener(newLocal, logGreyDiv);
-	pEl.removeEventListener(newLocal, logGreyP);
-	spanEl.removeEventListener(newLocal, logGreySpan);
-	divEl.removeEventListener(newLocal, logGreenDiv, true);
-	pEl.removeEventListener(newLocal, logGreenP, true);
-	spanEl.removeEventListener(newLocal, logGreenSpan, true);
+	divEl.removeEventListener(newLocal, logGreyDiv, true);
+	pEl.removeEventListener(newLocal, logGreyP, true);
+	spanEl.removeEventListener(newLocal, logGreySpan, true);
+	divEl.removeEventListener(newLocal, logGreenDiv);
+	pEl.removeEventListener(newLocal, logGreenP);
+	spanEl.removeEventListener(newLocal, logGreenSpan);
 };
 handlersOFF.addEventListener(newLocal, removeAllEvents);
