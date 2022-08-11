@@ -36,6 +36,7 @@ const addAllEvents = () => {
 	pEl.addEventListener(newLocal, logGreenP);
 	spanEl.addEventListener(newLocal, logGreenSpan);
 };
+addAllEvents();
 handlersON.addEventListener(newLocal, addAllEvents);
 
 const removeAllEvents = () => {
