@@ -54,7 +54,7 @@ export const finishList = () => {
 
 // 	let correctArray = [1, 2, 3, 4, 5, 6, 7, 8];
 // 	for (let i = 0; i < correctArray.length; i++) {
-// 		if (Array.from(numberOfGivenList.innerHTML).includes(correctArray[i])) {
+// 		if ((numberOfGivenList.innerHTML).includes(correctArray[i])) {
 // 			correctArray.splice(i);
 // 		}
 // 	}
