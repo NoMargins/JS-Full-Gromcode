@@ -27,7 +27,7 @@ const onChange = (event) => {
 };
 
 export const changeFunction = () => {
-	document.querySelector('.list').addEventListener('change', function (event) {
+	document.querySelector('.list').addEventListener('click', function (event) {
 		event.stopPropagation();
 		onChange(event);
 		renderTasks();
