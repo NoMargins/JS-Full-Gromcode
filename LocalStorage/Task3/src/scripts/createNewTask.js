@@ -7,12 +7,12 @@ const submitElem = document.querySelector('.create-task-btn');
 const uniqueID = Math.floor(Math.random() * 10000);
 
 const newTaskFunction = () => {
-	tasks.splice(0, 0, {
+	tasks.push({
 		text: `${newTaskElem.value}`,
 		done: false,
 		id: `${Math.floor(Math.random() * 1000)}`,
 	});
-	localStorage.setItem('tasksList', JSON.stringify(tasks));
+	return tasks;
 };
 
 const submitFunction = () => {
@@ -22,6 +22,7 @@ const submitFunction = () => {
 	} else {
 		newTaskElem.classList.remove('task-input__notice');
 		newTaskFunction();
+		localStorage.setItem('tasksList', JSON.stringify(tasks));
 		renderTasks(getLocalStorageData('tasksList'));
 		newTaskElem.value = '';
 		uniqueID + 1;
