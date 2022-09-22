@@ -1,18 +1,24 @@
 import { renderTasks } from './renderTasks.js';
-import { tasks } from './storage.js';
-import { getLocalStorageData } from './parsing.js';
+import { setItem, getItem } from './storage.js';
 
 const newTaskElem = document.querySelector('.task-input');
 const submitElem = document.querySelector('.create-task-btn');
-const uniqueID = Math.floor(Math.random() * 10000);
 
 const newTaskFunction = () => {
-	tasks.push({
+	let newTasksList;
+	if (getItem('tasksList') === null) {
+		newTasksList = [];
+	} else {
+		newTasksList = getItem('tasksList');
+	}
+	const newTask = {
 		text: `${newTaskElem.value}`,
 		done: false,
 		id: `${Math.floor(Math.random() * 1000)}`,
-	});
-	return tasks;
+	};
+	newTasksList.unshift(newTask);
+
+	setItem('tasksList', newTasksList);
 };
 
 const submitFunction = () => {
@@ -22,10 +28,8 @@ const submitFunction = () => {
 	} else {
 		newTaskElem.classList.remove('task-input__notice');
 		newTaskFunction();
-		localStorage.setItem('tasksList', JSON.stringify(tasks));
-		renderTasks(getLocalStorageData('tasksList'));
+		renderTasks();
 		newTaskElem.value = '';
-		uniqueID + 1;
 	}
 };
 

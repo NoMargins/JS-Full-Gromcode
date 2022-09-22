@@ -1,11 +1,16 @@
+import { getItem } from './storage.js';
+
 const listElem = document.querySelector('.list');
 
-function clearList() {
-	return (listElem.innerHTML = '');
-}
-export const renderTasks = (listOfTasks) => {
-	clearList();
-	const tasksElems = listOfTasks
+export const renderTasks = () => {
+	let tasksList;
+	if (getItem('tasksList') === null) {
+		tasksList = [];
+	} else {
+		tasksList = getItem('tasksList');
+	}
+	listElem.innerHTML = '';
+	const tasksElems = tasksList
 		.sort((a, b) => a.done - b.done)
 		.map(({ text, done, id }) => {
 			const listItemElem = document.createElement('li');
@@ -26,6 +31,5 @@ export const renderTasks = (listOfTasks) => {
 
 			return listItemElem;
 		});
-
 	listElem.append(...tasksElems);
 };

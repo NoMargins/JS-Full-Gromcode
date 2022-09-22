@@ -1,37 +1,34 @@
-import { tasks } from './storage.js';
+import { setItem, getItem } from './storage.js';
 import { renderTasks } from './renderTasks.js';
-import { getLocalStorageData } from './parsing.js';
 
 const onChange = (event) => {
-	return [...document.querySelectorAll('.list__item-checkbox')].map((el) => {
+	const storage = getItem('tasksList');
+	[...document.querySelectorAll('.list__item-checkbox')].map((el) => {
 		if (
 			el.getAttribute('id') === event.target.getAttribute('id') &&
 			el.checked
 		) {
-			return tasks
-				.filter(
-					(obj) => Number(obj.id) === Number(event.target.getAttribute('id'))
-				)
-				.map((obj) => (obj.done = true));
+			storage
+				.filter((task) => task.id === event.target.getAttribute('id'))
+				.map((task) => (task.done = true));
 		}
 		if (
 			el.getAttribute('id') === event.target.getAttribute('id') &&
 			!el.checked
 		) {
-			return tasks
-				.filter(
-					(obj) => Number(obj.id) === Number(event.target.getAttribute('id'))
-				)
-				.map((obj) => (obj.done = false));
+			storage
+				.filter((task) => task.id === event.target.getAttribute('id'))
+				.map((task) => (task.done = false));
 		}
+		return storage;
 	});
+	setItem('tasksList', storage);
 };
 
 export const changeFunction = () => {
 	document.querySelector('.list').addEventListener('change', function (event) {
 		event.stopPropagation();
 		onChange(event);
-		localStorage.setItem('tasksList', JSON.stringify(tasks));
-		renderTasks(getLocalStorageData('tasksList'));
+		renderTasks();
 	});
 };
