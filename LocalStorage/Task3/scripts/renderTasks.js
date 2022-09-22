@@ -3,9 +3,9 @@ const listElem = document.querySelector('.list');
 function clearList() {
 	return (listElem.innerHTML = '');
 }
-export const renderTasks = (tasksList) => {
+export const renderTasks = (listOfTasks) => {
 	clearList();
-	const tasksElems = tasksList
+	const tasksElems = listOfTasks
 		.sort((a, b) => a.done - b.done)
 		.map(({ text, done, id }) => {
 			const listItemElem = document.createElement('li');

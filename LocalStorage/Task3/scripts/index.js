@@ -1,9 +1,10 @@
 import { renderTasks } from './renderTasks.js';
 import { submitNewElemFunction } from './createNewTask.js';
 import { changeFunction } from './doneStatusChecker.js';
+import { getLocalStorageData } from './parsing.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-	renderTasks(JSON.parse(localStorage.getItem('tasksList')));
+	renderTasks(getLocalStorageData('tasksList'));
 	submitNewElemFunction();
 	changeFunction();
 });

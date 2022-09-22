@@ -1,5 +1,6 @@
 import { tasks } from './storage.js';
 import { renderTasks } from './renderTasks.js';
+import { getLocalStorageData } from './parsing.js';
 
 const onChange = (event) => {
 	[...document.querySelectorAll('.list__item-checkbox')].map((el) => {
@@ -31,6 +32,6 @@ export const changeFunction = () => {
 	document.querySelector('.list').addEventListener('change', function (event) {
 		event.stopPropagation();
 		onChange(event);
-		renderTasks(JSON.parse(localStorage.getItem('tasksList')));
+		renderTasks(getLocalStorageData('tasksList'));
 	});
 };
