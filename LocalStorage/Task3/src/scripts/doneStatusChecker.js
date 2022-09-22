@@ -22,7 +22,7 @@ const onChange = (event) => {
 		}
 		return storage;
 	});
-	setItem('tasksList', storage);
+	return setItem('tasksList', storage);
 };
 
 export const changeFunction = () => {
