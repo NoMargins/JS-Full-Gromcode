@@ -23,7 +23,7 @@ const onChange = (event) => {
 				)
 				.map((obj) => (obj.done = false));
 		}
-		return localStorage.setItem('tasks', JSON.stringify(tasks));
+		return localStorage.setItem('tasksList', JSON.stringify(tasks));
 	});
 };
 
@@ -31,6 +31,6 @@ export const changeFunction = () => {
 	document.querySelector('.list').addEventListener('change', function (event) {
 		event.stopPropagation();
 		onChange(event);
-		renderTasks(JSON.parse(localStorage.getItem('tasks')));
+		renderTasks(JSON.parse(localStorage.getItem('tasksList')));
 	});
 };

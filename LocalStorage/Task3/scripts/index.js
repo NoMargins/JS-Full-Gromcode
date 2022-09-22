@@ -3,7 +3,7 @@ import { submitNewElemFunction } from './createNewTask.js';
 import { changeFunction } from './doneStatusChecker.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-	renderTasks(JSON.parse(localStorage.getItem('tasks')));
+	renderTasks(JSON.parse(localStorage.getItem('tasksList')));
 	submitNewElemFunction();
 	changeFunction();
 });

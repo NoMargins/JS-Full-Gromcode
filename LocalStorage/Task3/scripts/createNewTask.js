@@ -11,7 +11,7 @@ const newTaskFunction = () => {
 		done: false,
 		id: `${Math.floor(Math.random() * 1000)}`,
 	});
-	localStorage.setItem('tasks', JSON.stringify(tasks));
+	localStorage.setItem('tasksList', JSON.stringify(tasks));
 };
 
 const submitFunction = () => {
@@ -21,7 +21,7 @@ const submitFunction = () => {
 	} else {
 		newTaskElem.classList.remove('task-input__notice');
 		newTaskFunction();
-		renderTasks(localStorage.getItem('tasks'));
+		renderTasks(localStorage.getItem('tasksList'));
 		newTaskElem.value = '';
 		uniqueID + 1;
 	}
