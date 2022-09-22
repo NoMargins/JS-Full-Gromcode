@@ -2,6 +2,8 @@ import { setItem, getItem } from './storage.js';
 import { renderTasks } from './renderTasks.js';
 
 const onChange = (event) => {
+	event.stopPropagation();
+
 	const storage = getItem('tasksList');
 	[...document.querySelectorAll('.list__item-checkbox')].map((el) => {
 		if (
@@ -22,13 +24,10 @@ const onChange = (event) => {
 		}
 		return storage;
 	});
-	return setItem('tasksList', storage);
+	setItem('tasksList', storage);
+	renderTasks();
 };
 
 export const changeFunction = () => {
-	document.querySelector('.list').addEventListener('change', function (event) {
-		event.stopPropagation();
-		onChange(event);
-		renderTasks();
-	});
+	document.querySelector('.list').addEventListener('change', onChange);
 };
