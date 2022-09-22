@@ -2,7 +2,6 @@ import { setItem, getItem } from './storage.js';
 import { renderTasks } from './renderTasks.js';
 
 const onChange = (event) => {
-	event.stopPropagation();
 	const storage = getItem('tasksList');
 
 	[...document.querySelectorAll('.list__item-checkbox')].map((el) => {
