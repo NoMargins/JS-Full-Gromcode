@@ -1,4 +1,4 @@
-const addImage = (imgSrc, callback) => {
+export const addImage = (imgSrc, callback) => {
 	const newImage = document.createElement('img');
 	newImage.setAttribute('alt', 'my new image');
 	newImage.src = imgSrc;
@@ -11,9 +11,7 @@ const addImage = (imgSrc, callback) => {
 	};
 
 	newImage.addEventListener('load', onImageLoaded);
-	newImage.addEventListener('error', () =>
-		console.log('Your image uploading failed')
-	);
+	newImage.addEventListener('error', () => console.log('Image load is failed'));
 };
 
 // callack function
