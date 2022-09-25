@@ -24,7 +24,7 @@ const onImageLoaded = (error, imgElem) => {
 	const { width, height } = imgElem;
 	const sizeElem = document.querySelector('.image-size');
 
-	return (sizeElem.textContent = `${width} x ${height}`);
+	sizeElem.textContent = `${width} x ${height}`;
 };
 
 const imgSrc =
