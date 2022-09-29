@@ -17,8 +17,8 @@ const getUser = () => {
 	return fetch(getFullclientUrl)
 		.then((response) => response.json())
 		.then((result) => {
-			const { login, avatar_url, location } = result;
-			userNameElem.textContent = login;
+			const { name, avatar_url, location } = result;
+			userNameElem.textContent = name;
 			userLocationElem.textContent = location ? `from ${location}` : '';
 			imgElem.src = avatar_url;
 		});
