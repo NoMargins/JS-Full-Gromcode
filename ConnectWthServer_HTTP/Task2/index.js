@@ -4,7 +4,7 @@ const getAuthorNameElem = document.querySelector('.author-name');
 const getAuthorMailElem = document.querySelector('.author-mail');
 const getPageElem = document.querySelector('.page');
 
-const getMostActiveDevs = (userID, repoID) => {
+export const getMostActiveDevs = (userID, repoID) => {
 	return fetch(
 		`https://api.github.com/repos/${userID}/${repoID}/commits?per_page=100`
 	)
