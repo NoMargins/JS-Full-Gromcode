@@ -4,13 +4,13 @@ const getAuthorNameElem = document.querySelector('.author-name');
 const getAuthorMailElem = document.querySelector('.author-mail');
 const getPageElem = document.querySelector('.page');
 
-export const getMostActiveDevs = (userID, repoID) => {
+export const getMostActiveDevs = (repoData) => {
 	return fetch(
-		`https://api.github.com/repos/${userID}/${repoID}/commits?per_page=100`
+		`https://api.github.com/repos/${repoData.userID}/${repoData.repoID}/commits?per_page=100`
 	)
 		.then((response) => response.json())
 		.then((result) => {
-			getCompanyNameElem.textContent = userID + '/' + repoID;
+			getCompanyNameElem.textContent = repoData.userID + '/' + repoData.repoID;
 			let newArr = [];
 			let finalArr = [];
 			result
@@ -18,7 +18,9 @@ export const getMostActiveDevs = (userID, repoID) => {
 					const { author } = commit;
 					const { date } = author;
 					const dayNow = new Date();
-					if (new Date(date) > dayNow.setDate(dayNow.getDate() - 7)) {
+					if (
+						new Date(date) > dayNow.setDate(dayNow.getDate() - repoData.days)
+					) {
 						return commit;
 					}
 				})
@@ -60,8 +62,10 @@ export const getMostActiveDevs = (userID, repoID) => {
 
 			theVeryLastRes.splice(12, theVeryLastRes.length - 1);
 
-			console.log(theVeryLastRes);
+			return theVeryLastRes;
 		});
 };
 
-getMostActiveDevs('apple', 'swift');
+getMostActiveDevs({ days: 3, userID: 'apple', repoID: 'swift' }).then(
+	(result) => console.log(result)
+);

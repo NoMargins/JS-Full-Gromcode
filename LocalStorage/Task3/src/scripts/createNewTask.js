@@ -1,24 +1,23 @@
 import { renderTasks } from './renderTasks.js';
 import { setItem, getItem } from './storage.js';
+import { createTask, getTasksList } from './tasksGateway.js';
 
 const newTaskElem = document.querySelector('.task-input');
 const submitElem = document.querySelector('.create-task-btn');
 
 const newTaskFunction = () => {
-	let newTasksList;
-	if (getItem('tasksList') === null) {
-		newTasksList = [];
-	} else {
-		newTasksList = getItem('tasksList');
-	}
 	const newTask = {
 		text: `${newTaskElem.value}`,
 		done: false,
-		id: `${Math.floor(Math.random() * 1000)}`,
+		createDate: new Date().toISOString(),
 	};
-	newTasksList.unshift(newTask);
 
-	setItem('tasksList', newTasksList);
+	createTask(newTask)
+		.then(() => getTasksList())
+		.then((newTasksList) => {
+			setItem('tasksList', newTasksList);
+			renderTasks();
+		});
 };
 
 const submitFunction = () => {

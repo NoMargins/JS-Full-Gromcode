@@ -14,6 +14,10 @@ export const renderTasks = () => {
 		.sort((a, b) => a.done - b.done)
 		.map(({ text, done, id }) => {
 			const listItemElem = document.createElement('li');
+			const deleteBtn = document.createElement('button');
+			deleteBtn.classList.add('delete-btn');
+			deleteBtn.innerHTML = `<i class="fa fa-window-close" aria-hidden="true"></i>`;
+			deleteBtn.setAttribute('id', id);
 			listItemElem.classList.add('list__item');
 			const checkbox = document.createElement('input');
 			checkbox.setAttribute('type', 'checkbox');
@@ -27,7 +31,7 @@ export const renderTasks = () => {
 				listItemElem.classList.remove('list__item_done');
 			}
 
-			listItemElem.append(checkbox, text);
+			listItemElem.append(checkbox, text, deleteBtn);
 
 			return listItemElem;
 		});

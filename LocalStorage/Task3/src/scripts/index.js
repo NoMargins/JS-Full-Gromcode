@@ -1,9 +1,14 @@
 import { renderTasks } from './renderTasks.js';
 import { submitNewElemFunction } from './createNewTask.js';
 import { changeFunction } from './doneStatusChecker.js';
+import { getTasksList } from './tasksGateway.js';
+import { setItem } from './storage.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-	renderTasks();
+	getTasksList().then((tasksList) => {
+		setItem('tasksList', tasksList);
+		renderTasks();
+	});
 	submitNewElemFunction();
 	changeFunction();
 });
