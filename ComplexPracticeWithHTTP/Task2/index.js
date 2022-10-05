@@ -32,7 +32,6 @@ const onFormSubmit = (e) => {
 	const password = passwordValue.value;
 	const name = userNameValue.value;
 
-	getAllInputsELem.map;
 	const userData = {
 		mail,
 		password,
