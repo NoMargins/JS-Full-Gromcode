@@ -12,6 +12,7 @@ export const getUser = () => {
 	const fullClientUrl = linkConstructor(clientInput);
 	const getUserInfo = getFullClientData(fullClientUrl);
 	return getUserInfo.then((result) => {
+		hideSpinner();
 		const { name, avatar_url, location, repos_url } = result;
 		userNameElem.textContent = name;
 		userLocationElem.textContent = location ? `from ${location}` : '';
@@ -25,7 +26,6 @@ export const getUser = () => {
 					reposNameElem.innerText = el;
 					reposList.append(reposNameElem);
 				});
-				hideSpinner();
 			})
 			.catch((err) => {
 				hideSpinner();
