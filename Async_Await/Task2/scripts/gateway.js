@@ -5,13 +5,9 @@ export const linkConstructor = (userName) => {
 };
 
 export const fetchUserData = async (name) => {
-	try {
-		const result = await fetch(`${gitHubCommonUrl}/${name}`);
-		if (result.status != 200) {
-			alert('Failed to load data');
-		}
+	const result = await fetch(`${gitHubCommonUrl}/${name}`);
+	if (result.status === 200) {
 		return await result.json();
-	} catch (err) {
-		throw new Error(err.message);
 	}
+	throw new Error('Failed to load data');
 };
