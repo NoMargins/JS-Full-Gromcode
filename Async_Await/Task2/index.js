@@ -24,7 +24,6 @@ const onSearchUser = async () => {
 	showSpinner();
 	cleanReposList();
 	const userName = userNameElem.value;
-	// renderUserData(defaultUser);
 	try {
 		const userData = await fetchUserData(userName);
 		renderUserData(userData);
