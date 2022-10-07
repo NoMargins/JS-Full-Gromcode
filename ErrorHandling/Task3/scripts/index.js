@@ -7,7 +7,7 @@ const nameInputElem = document.querySelector('.name-form__input');
 const reposList = document.querySelector('.repo-list');
 const submitBtnElem = document.querySelector('.name-form__btn');
 const imgElem = document.querySelector('.user__avatar');
-imgElem.src = 'https://avatars.githubusercontent.com/u/9919?v=4';
+imgElem.src = 'https://avatars3.githubusercontent.com/u10001';
 
 submitBtnElem.addEventListener('click', function () {
 	userNameElem.textContent = '';

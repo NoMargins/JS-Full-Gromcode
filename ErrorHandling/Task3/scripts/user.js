@@ -19,14 +19,17 @@ export const getUser = () => {
 		getFullClientData(repos_url)
 			.then((response) => {
 				const allRepoNames = response.map((obj) => obj.name);
-				return allRepoNames.map((el) => {
+				allRepoNames.map((el) => {
 					const reposNameElem = document.createElement('span');
 					reposNameElem.classList.add('repo-list__item');
 					reposNameElem.innerText = el;
 					reposList.append(reposNameElem);
 				});
+				hideSpinner();
 			})
-			.catch((err) => alert('Failed to load data'));
-		hideSpinner();
+			.catch((err) => {
+				hideSpinner();
+				alert('Failed to load data');
+			});
 	});
 };
