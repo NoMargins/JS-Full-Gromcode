@@ -5,8 +5,11 @@ export const cleanReposList = () => {
 };
 
 export const fetchRepositories = async (url) => {
-	const result = await fetch(url);
-	return await result.json();
+	const response = await fetch(url);
+	if (response.ok) {
+		return await response.json();
+	}
+	throw new Error('Failed to load data');
 };
 
 export const renderRepos = (reposList) => {
