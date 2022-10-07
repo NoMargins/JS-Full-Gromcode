@@ -1,18 +1,41 @@
-import { showSpinner } from './spinner.js';
-import { getUser } from './render.js';
-import { cleanReposList } from './repos.js';
+import { showSpinner, hideSpinner } from './spinner.js';
+import { cleanReposList, renderRepos, fetchRepositories } from './repos.js';
+import { renderUserData } from './user.js';
+import { fetchUserData } from './gateway.js';
 
-const userNameElem = document.querySelector('.user__name');
-const userLocationElem = document.querySelector('.user__location');
 const submitBtnElem = document.querySelector('.name-form__btn');
 const imgElem = document.querySelector('.user__avatar');
+const userNameElem = document.querySelector('.name-form__input');
 // imgElem.src = 'https://avatars3.githubusercontent.com/u10001';
 imgElem.src = 'https://avatars.githubusercontent.com/u/895678?s=400&v=4';
 
-submitBtnElem.addEventListener('click', function () {
-	userNameElem.textContent = '';
-	userLocationElem.textContent = '';
+const defaultUser = {
+	name: '',
+	avatar_url: 'https://avatars.githubusercontent.com/u/895678?s=400&v=4',
+	location: '',
+};
+renderUserData(defaultUser);
+
+const onSearchUser = () => {
 	showSpinner();
 	cleanReposList();
-	getUser();
-});
+	const userName = userNameElem.value;
+	fetchUserData(userName)
+		.then((userData) => {
+			renderUserData(userData);
+			return userData.repos_url;
+		})
+		.then((url) => {
+			return fetchRepositories(url);
+		})
+		.then((reposList) => {
+			renderRepos(reposList);
+			hideSpinner();
+		})
+		.catch((err) => {
+			hideSpinner();
+			alert(err.message);
+		});
+};
+
+submitBtnElem.addEventListener('click', onSearchUser);

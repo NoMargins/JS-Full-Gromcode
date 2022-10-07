@@ -5,7 +5,7 @@ import { renderUserData } from './user.js';
 
 const nameInputElem = document.querySelector('.name-form__input');
 
-export const getUser = () => {
+export const renderRepos = (reposList) => {
 	const clientInput = nameInputElem.value;
 	const fullClientUrl = linkConstructor(clientInput);
 	const getUserInfo = getFullClientData(fullClientUrl);

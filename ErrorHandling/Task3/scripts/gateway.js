@@ -4,7 +4,7 @@ export const linkConstructor = (userName) => {
 	return gitHubCommonUrl + '/' + userName;
 };
 
-export const getFullClientData = (url) =>
-	fetch(url)
+export const fetchUserData = (name) =>
+	fetch(`${gitHubCommonUrl}/${name}`)
 		.then((response) => response.json())
 		.catch((err) => alert('Failed to load data'));
