@@ -19,7 +19,7 @@ renderUserData(defaultUser);
 const onSearchUser = async () => {
 	showSpinner();
 	cleanReposList();
-	renderUserData(defaultUser);
+	// renderUserData(defaultUser);
 	try {
 		const userName = userNameElem.value;
 		const userData = await fetchUserData(userName);
@@ -27,7 +27,9 @@ const onSearchUser = async () => {
 		const getRepoList = await fetchRepositories(userData.repos_url);
 		renderRepos(getRepoList);
 	} catch (err) {
+		hideSpinner();
 		alert(err.message);
+		// renderUserData(defaultUser);
 	} finally {
 		hideSpinner();
 	}
