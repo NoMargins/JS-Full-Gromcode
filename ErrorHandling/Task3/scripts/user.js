@@ -1,11 +1,11 @@
 import { linkConstructor, getFullClientData } from './gateway.js';
 import { hideSpinner } from './spinner.js';
+import { renderRepos } from './repos.js';
 
 const imgElem = document.querySelector('.user__avatar');
 const userNameElem = document.querySelector('.user__name');
 const userLocationElem = document.querySelector('.user__location');
 const nameInputElem = document.querySelector('.name-form__input');
-const reposList = document.querySelector('.repo-list');
 
 export const getUser = () => {
 	const clientInput = nameInputElem.value;
@@ -20,12 +20,7 @@ export const getUser = () => {
 		getFullClientData(repos_url)
 			.then((response) => {
 				const allRepoNames = response.map((obj) => obj.name);
-				allRepoNames.map((el) => {
-					const reposNameElem = document.createElement('span');
-					reposNameElem.classList.add('repo-list__item');
-					reposNameElem.innerText = el;
-					reposList.append(reposNameElem);
-				});
+				renderRepos(allRepoNames);
 			})
 			.catch((err) => {
 				hideSpinner();
