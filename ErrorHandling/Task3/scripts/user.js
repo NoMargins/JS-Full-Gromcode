@@ -1,30 +1,10 @@
-import { linkConstructor, getFullClientData } from './gateway.js';
-import { hideSpinner } from './spinner.js';
-import { renderRepos } from './repos.js';
-
-const imgElem = document.querySelector('.user__avatar');
 const userNameElem = document.querySelector('.user__name');
 const userLocationElem = document.querySelector('.user__location');
-const nameInputElem = document.querySelector('.name-form__input');
+const userAvatarElem = document.querySelector('.user__avatar');
 
-export const getUser = () => {
-	const clientInput = nameInputElem.value;
-	const fullClientUrl = linkConstructor(clientInput);
-	const getUserInfo = getFullClientData(fullClientUrl);
-	return getUserInfo.then((result) => {
-		hideSpinner();
-		const { name, avatar_url, location, repos_url } = result;
-		userNameElem.textContent = name;
-		userLocationElem.textContent = location ? `from ${location}` : '';
-		imgElem.src = avatar_url;
-		getFullClientData(repos_url)
-			.then((response) => {
-				const allRepoNames = response.map((obj) => obj.name);
-				renderRepos(allRepoNames);
-			})
-			.catch((err) => {
-				hideSpinner();
-				alert('Failed to load data');
-			});
-	});
+export const renderUserData = (userData) => {
+	const { avatar_url, name, location } = userData;
+	userAvatarElem.src = avatar_url;
+	userNameElem.textContent = name;
+	userLocationElem.textContent = location ? `from ${location}` : '';
 };

@@ -1,5 +1,5 @@
 import { showSpinner } from './spinner.js';
-import { getUser } from './user.js';
+import { getUser } from './render.js';
 import { cleanReposList } from './repos.js';
 
 const userNameElem = document.querySelector('.user__name');
