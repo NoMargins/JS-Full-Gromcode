@@ -1,7 +1,11 @@
-import { showSpinner, hideSpinner } from './spinner.js';
-import { cleanReposList, renderRepos, fetchRepositories } from './repos.js';
-import { renderUserData } from './user.js';
-import { fetchUserData } from './gateway.js';
+import { showSpinner, hideSpinner } from './scripts/spinner.js';
+import {
+	cleanReposList,
+	renderRepos,
+	fetchRepositories,
+} from './scripts/repos.js';
+import { renderUserData } from './scripts/user.js';
+import { fetchUserData } from './scripts/gateway.js';
 
 const submitBtnElem = document.querySelector('.name-form__btn');
 // const imgElem = document.querySelector('.user__avatar');
