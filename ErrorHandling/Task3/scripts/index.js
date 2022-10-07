@@ -11,7 +11,7 @@ imgElem.src = 'https://avatars.githubusercontent.com/u/895678?s=400&v=4';
 
 const defaultUser = {
 	name: '',
-	avatar_url: 'https://avatars.githubusercontent.com/u/895678?s=400&v=4',
+	avatar_url: 'https://avatars3.githubusercontent.com/u10001',
 	location: '',
 };
 renderUserData(defaultUser);
