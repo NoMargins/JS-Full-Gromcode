@@ -5,6 +5,9 @@ export const linkConstructor = (userName) => {
 };
 
 export const fetchUserData = (name) =>
-	fetch(`${gitHubCommonUrl}/${name}`)
-		.then((response) => response.json())
-		.catch((err) => alert('Failed to load data'));
+	fetch(`${gitHubCommonUrl}/${name}`).then((response) => {
+		if (response.status === 200) {
+			return response.json();
+		}
+		throw new Error('Failed to load data');
+	});
